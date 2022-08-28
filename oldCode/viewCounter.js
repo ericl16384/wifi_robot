@@ -10,15 +10,15 @@ const fs = require("fs");
 const host = "localhost";
 const port = 80;
 
-// var fileLocation = "index.html";
-// var fileContents = null;
-// fs.readFile(fileLocation, "utf8", function(err, data) {
-//     if(err) {
-//         console.log(err)
-//     } else {
-//         fileContents = data;
-//     }
-// });
+var fileLocation = "index.html";
+var fileContents = null;
+fs.readFile(fileLocation, "utf8", function(err, data) {
+    if(err) {
+        console.log(err)
+    } else {
+        fileContents = data;
+    }
+});
 
 var views = 0;
 
@@ -32,9 +32,9 @@ function requestListener(request, result) {
 //        var msg = `Hello from the web server!
 
 //Views: ${views}`;
-        msg = String(views);
+        msg = fileContents;
 
-        // result.setHeader("Content-Type", "text/html");
+        result.setHeader("Content-Type", "text/html");
         result.writeHead(200);    // status 200 = OK
         result.end(msg);
     } else {
